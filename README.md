@@ -9,13 +9,13 @@ The IGVC LED has three modes: manual, autonomous, and panic.  Manual mode is sol
 
 ### Configuration
 
-1. Connect the LED to Digital Pin 13 (the same pin as the on-board LED).
-2. Clone the igvc ros package into your catkin workspace src folder.
+1. Clone the igvc ros package into your catkin workspace src folder.
  - `cd ~/catkin_ws/src`
  - `git clone https://github.com/westpoint-robotics/igvc.git igvc`
-4. Open the sketch from the /sketches/control_mode folder and program your Arduino.
+2. Open the sketch from the /sketches/control_mode folder and program your Arduino.
  - Ensure the correct board and COM port is selected (in Linux, it is typically ttyACM0).
-
+3. Connect the LED to Digital Pin 13 (the same pin as the on-board LED).
+ 
 ### Testing
 
 1. Start up the roscore in a new terminal.
