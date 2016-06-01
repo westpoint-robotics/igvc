@@ -7,10 +7,14 @@ From the IGVC Rules --" Safety Light: The vehicle must have an easily viewed sol
 
 The IGVC LED has three modes: manual, autonomous, and panic.  Manual mode is solid, autonomous mode blinks at 1 Hz, panic mode blinks at 5 Hz.
 
-Download the Arduino Sketch
-Connect the LED to Digital Pin 13 (the same pin as the on-board LED)
-Upload the Arduino Sketch - ensure the correct board and COM port is selected (in Linux, it is typically ttyACM0)
-Program you Arduino with the control_mode sketch. Open the sketch from the /sketches/control_mode folder and program your Arduino.
+Configuration
+
+1. Connect the LED to Digital Pin 13 (the same pin as the on-board LED).
+2. Clone the igvc ros package into your catkin workspace src folder.
+ - `cd ~/catkin_ws/src`
+ - `git clone https://github.com/westpoint-robotics/igvc.git igvc`
+4. Open the sketch from the /sketches/control_mode folder and program your Arduino.
+ - Ensure the correct board and COM port is selected (in Linux, it is typically ttyACM0).
 
 Testing
 
@@ -23,7 +27,6 @@ Testing
 `$ rosrun rosserial_python serial_node.py /dev/ttyACM0`
 
 3. Publish to the mode topic with a string.
-
-`$ rostopic pub igvc/mode std_msgs/String "manual" -r 10`
-`rostopic pub igvc/mode std_msgs/String "autonomous" -r 10`
-`$ rostopic pub igvc/mode std_msgs/String "panic" -r 10`
+ - `rostopic pub igvc/mode std_msgs/String "manual" -r 10`
+ - `rostopic pub igvc/mode std_msgs/String "autonomous" -r 10`
+ - `rostopic pub igvc/mode std_msgs/String "panic" -r 10`
