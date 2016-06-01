@@ -1,5 +1,29 @@
 # igvc
 Repo for the West Point Intelligent Ground Vehicle Competition Team
 
-Keith Schneider
+## Safety LED for Control Modes
 
+From the IGVC Rules --" Safety Light: The vehicle must have an easily viewed solid indicator light which is turned on whenever the vehicle power is turned on. The light must go from solid to flashing whenever the vehicle is in autonomous mode. As soon as the vehicle comes out of autonomous mode the light must go back to solid."
+
+The IGVC LED has three modes: manual, autonomous, and panic.  Manual mode is solid, autonomous mode blinks at 1 Hz, panic mode blinks at 5 Hz.
+
+Download the Arduino Sketch
+Connect the LED to Digital Pin 13 (the same pin as the on-board LED)
+Upload the Arduino Sketch - ensure the correct board and COM port is selected (in Linux, it is typically ttyACM0)
+Program you Arduino with the control_mode sketch. Open the sketch from the /sketches/control_mode folder and program your Arduino.
+
+Testing
+
+1. Start up the roscore in a new terminal.
+
+`$ roscore`
+
+2. Launch the rosserial_python serial_node. Make sure to choose the right serial port.
+
+`$ rosrun rosserial_python serial_node.py /dev/ttyACM0`
+
+3. Publish to the mode topic with a string.
+
+`$ rostopic pub igvc/mode std_msgs/String "manual" -r 10`
+`rostopic pub igvc/mode std_msgs/String "autonomous" -r 10`
+`$ rostopic pub igvc/mode std_msgs/String "panic" -r 10`
