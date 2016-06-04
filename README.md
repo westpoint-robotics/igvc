@@ -15,6 +15,10 @@ The IGVC LED has three modes: manual, autonomous, and panic.  Manual mode is sol
 2. Open the sketch from the /sketches/control_mode folder and program your Arduino.
  - Ensure the correct board and COM port is selected (in Linux, it is typically ttyACM0).
 3. Connect the LED to Digital Pin 13 (the same pin as the on-board LED).
+
+### Implementation of IGVC
+1. Download the LPD8806 Library from `https://github.com/adafruit/LPD8806` and follow the installation instructions to add the library.
+2. Update the the `igvc_control_mode` sketch with the clock and data pins on the protoboard.
  
 ### Testing
 
