@@ -366,7 +366,7 @@
   </div>
 </div>
 
-<include-fragment class="commit-tease" src="/qboticslabs/mastering_ros_robot_description_pkg/contributors/master/urdf/wheel.urdf.xacro">
+<xacro:include-fragment class="commit-tease" src="/qboticslabs/mastering_ros_robot_description_pkg/contributors/master/urdf/wheel.urdf.xacro">
   <div>
     Fetching contributors&hellip;
   </div>
