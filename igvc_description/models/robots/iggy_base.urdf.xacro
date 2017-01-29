@@ -26,13 +26,13 @@
     <property name="wheel_offset_z_from_base_link" value="-${wheel_radius_big}" />
     
     <macro name="iggy_base_macro">
-        <!-- Links and Joints (i.e., the robot) -->
-        <link name="base_footprint"/>
+        <!-- Links and Joints (i.e., the robot) 
+        <link name="base_link"/>
         <joint name="bf_to_bl" type="fixed">
           <origin xyz="0.0 0.0 -${base_size_z * 2}" rpy="0.0 0.0 0.0" />
           <parent link="base_link"/>
           <child link="base_footprint"/>
-        </joint>
+        </joint> -->
 
         <link name="base_link">
             <inertial>
@@ -84,6 +84,7 @@
         <!-- TODO: make custom plugin for this that doesn't require an imu -->
         <plugin name="diffdrive_plugin_multiwheel" filename="libdiffdrive_plugin_multi_wheel.so">                
                 <alwaysOn>true</alwaysOn>
+            <robotNamespace>roboteq_driver</robotNamespace>
                 <updateRate>50.0</updateRate>
                 <leftJoints>left_0_wheel_joint left_1_wheel_joint left_2_wheel_joint left_3_wheel_joint left_4_wheel_joint left_5_wheel_joint</leftJoints>
                 <rightJoints>right_0_wheel_joint right_1_wheel_joint right_2_wheel_joint right_3_wheel_joint right_4_wheel_joint right_5_wheel_joint</rightJoints>
@@ -93,7 +94,8 @@
                 <interface:position name="position_iface_2"/>
                 <robotNamespace>/</robotNamespace>
                 <robotBaseFrame>base_link</robotBaseFrame>
-                <commandTopic>/iggy/cmd_vel</commandTopic>
+                <odometryFrame>odom</odometryFrame>
+                <commandTopic>/roboteq_driver/cmd_vel</commandTopic>
                 <publishOdometryTf>1</publishOdometryTf>
                 <publishOdometryMsg>1</publishOdometryMsg>
                 <odometryTopic>/iggy/odom</odometryTopic>
@@ -114,7 +116,7 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>50.0</updateRate>
           <bodyName>base_link</bodyName>
-          <topicName>/iggy/imu_quat</topicName>
+          <topicName>/imu/data</topicName>
           <accelDrift>0.0 0.0 0.0</accelDrift>
           <accelGaussianNoise>0.1 0.1 0.1</accelGaussianNoise>
           <rateDrift>0.0 0.0 0.0</rateDrift>
@@ -125,6 +127,7 @@
 
         <plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
             <alwayson>1</alwayson>
+            <robotNamespace>gps</robotNamespace>
             <updaterate>10.0</updaterate>
             <bodyname>base_link</bodyname>
             <frameId>map</frameId>
